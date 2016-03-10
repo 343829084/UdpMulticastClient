@@ -58,6 +58,7 @@ void ReceiveFileThread::proccessData(QByteArray &array)
         CommonSetting::Sleep(1000);
         CommonSetting::WriteSettings("/bin/config.ini","time/CardListUpTime","2010-01-01 00:00:00");
         system("tar xzvf /bin/UpgradePackage.tar.gz -C / > /dev/null 2>&1");
+
         s->disconnectFromHost();
         system("reboot");
         break;

@@ -25,8 +25,9 @@
 #define BUFF_SIZE                        1025
 #define FILE_NAME_LENGTH                 40
 
-#define JiaYouZhanConfigBranch1
-#define ShuaKaJiConfigBranch1
+#define JiaYouZhanConfigWiegBranch
+//#define JiaYouZhanConfigCertificateBranch
+//#define ShuaKaJiConfigBranch
 
 class UdpMulticastClient : public QObject
 {
@@ -36,6 +37,9 @@ public:
     explicit UdpMulticastClient(QObject *parent = 0);
     ~UdpMulticastClient();
     char *GetLocalHostIP();
+    void GetLocalHostMac(char *mac_addr);
+    char *GetLocalHostMask();
+//    char *GetLocalHostGateWay();
 
 private slots:
     void slotProcessPendingDatagrams();
