@@ -25,8 +25,8 @@
 #define BUFF_SIZE                        1025
 #define FILE_NAME_LENGTH                 40
 
-#define JiaYouZhanConfigWiegBranch
-//#define JiaYouZhanConfigCertificateBranch
+//#define JiaYouZhanConfigWiegBranch
+#define JiaYouZhanConfigCertificateBranch
 //#define ShuaKaJiConfigBranch
 
 class UdpMulticastClient : public QObject

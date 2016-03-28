@@ -139,6 +139,7 @@ void UdpMulticastClient::slotProcessPendingDatagrams()
             char *DevelopBoardGateWay = strtok(NULL,",");
             char *DevelopBoardMask = strtok(NULL,",");
             char *DevelopBoardDNS = strtok(NULL,",");
+            char *DevelopBoardMAC = strtok(NULL,",");
             char *SmartUSBNumber = strtok(NULL,",");
 
             CommonSetting::WriteSettings("/bin/config.ini","ServerNetwork/IP",ServerIP);
@@ -167,7 +168,7 @@ void UdpMulticastClient::slotProcessPendingDatagrams()
                                  << tr("Mask=%1\n").arg(DevelopBoardMask)
                                  << tr("Gateway=%1\n").arg(DevelopBoardGateWay)
                                  << tr("DNS=%1\n").arg(DevelopBoardDNS)
-                                 << tr("MAC=%1\n").arg("08:90:90:90:90:90");
+                                 << tr("MAC=%1\n").arg(DevelopBoardMAC);
             QString ConfigureInfo = DevelopConfigureInfo.join("");
 
             QString fileName("/etc/eth0-setting");
@@ -175,7 +176,7 @@ void UdpMulticastClient::slotProcessPendingDatagrams()
 
         sendto(SendSocketFd,"Client###Configure###OK",sizeof("Client###Configure###OK"),0,(struct sockaddr*)&SendMulticastAddr,sizeof(struct sockaddr_in));
             CommonSetting::Sleep(1000);
-            system("reboot");
+            system("/etc/init.d/ifconfig-eth0");
         }
     }
 }
