@@ -176,7 +176,8 @@ void UdpMulticastClient::slotProcessPendingDatagrams()
 
         sendto(SendSocketFd,"Client###Configure###OK",sizeof("Client###Configure###OK"),0,(struct sockaddr*)&SendMulticastAddr,sizeof(struct sockaddr_in));
             CommonSetting::Sleep(1000);
-            system("/etc/init.d/ifconfig-eth0");
+//            system("/etc/init.d/ifconfig-eth0");
+            system("reboot");
         }
     }
 }
